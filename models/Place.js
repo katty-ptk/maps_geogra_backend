@@ -12,6 +12,16 @@ const PlaceSchema = mongoose.Schema({
         default: ""
     },
 
+    lat: {
+        type: String,
+        required: true
+    },
+
+    lng: {
+        type: String,
+        required: true
+    },
+
     images: {
         type: Array,
         required: false,

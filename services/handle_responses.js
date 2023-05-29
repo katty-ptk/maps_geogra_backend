@@ -4,10 +4,18 @@ class ResponseService {
     }
 
     checkForUndefinedParam( place ) {
-        const { title, climate, nature, tourism, economy, borders } = place;
+        const { title, lat, lng, climate, nature, tourism, economy, borders } = place;
 
         if ( title == undefined ) {
             return "TITLE"
+        }
+
+        if ( lat == undefined ) {
+            return "LAT"
+        }
+
+        if ( lng == undefined ) {
+            return "LNG"
         }
 
         if ( climate == undefined ) {

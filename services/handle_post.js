@@ -9,6 +9,8 @@ class PostReq {
         const place = new Place({
             title: place_info.title, 
             snippet: place_info.snippet ? place_info.snippet : "",
+            lat: place_info.lat,
+            lng: place_info.lng,
             images: place_info.images ? place_info.images : [],
             climate: place_info.climate,
             nature: place_info.nature,
@@ -29,9 +31,7 @@ class PostReq {
                     message: "Make sure you enter text for: " + validation
                 };
             } else {
-                response = {
-                    message: err
-                }
+                response = "ERROR"
             }
        }
 
