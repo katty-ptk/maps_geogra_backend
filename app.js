@@ -9,15 +9,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // import routes
-const postsRoute = require('./routes/posts');
 const placesRoute = require('./routes/places');
+const pendingPlacesRoute = require('./routes/pending_places');
 
 const cors = require('cors');
 
 app.use(cors());
 
-app.use('/posts', postsRoute);
 app.use('/places', placesRoute);
+app.use('/pendingPlaces', pendingPlacesRoute);
 
 // ROUTES
 app.get('/', ( req, res ) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Place = require('../models/Place');
+const Pending_Place = require('../models/Place');
 
 const ResponseService = require('../services/handle_responses');
 const GetReq = require('../services/handle_get');
@@ -9,7 +9,7 @@ const PostReq = require('../services/handle_post');
 
 // get all posts
 router.get('/', async ( req, res ) => {
-    const response = await new GetReq().getAllPlaces();
+    const response = await new GetReq().getAllPendingPlaces();
     res.json(response);
 });
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const PlaceSchema = mongoose.Schema({
+const PendingPlaceSchema = mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -53,4 +53,4 @@ const PlaceSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Places', PlaceSchema);
+module.exports = mongoose.model('PendingPlaces', PendingPlaceSchema);
