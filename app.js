@@ -10,12 +10,14 @@ app.use(bodyParser.json());
 
 // import routes
 const placesRoute = require('./routes/places');
+const pendingPlacesRoute = require('./routes/pending_places');
 
 const cors = require('cors');
 
 app.use(cors());
 
 app.use('/places', placesRoute);
+app.use('/pendingPlaces', pendingPlacesRoute);
 
 // ROUTES
 app.get('/', ( req, res ) => {

@@ -1,6 +1,7 @@
 const express = require('express');
 const Place = require('../models/Place');
 const ResponseService = require('../services/handle_responses');
+const PendingPlace = require('../models/PendingPlace');
 
 class GetReq {
 
@@ -17,6 +18,19 @@ class GetReq {
 
         return response;
    }
+
+   async getAllPendingPlaces() {
+        let response;
+
+        try {
+            const pending_places = await PendingPlace.find();
+            response = pending_places;
+        } catch ( err ) {
+            response = err;
+        }
+
+        return response;
+    }
     
    async getSpecificPlace(placeID) {
         let response;
