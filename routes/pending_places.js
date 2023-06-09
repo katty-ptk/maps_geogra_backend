@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Pending_Place = require('../models/Place');
 
-const ResponseService = require('../services/handle_responses');
 const GetReq = require('../services/handle_get');
 const PostReq = require('../services/handle_post');
 
@@ -17,7 +16,7 @@ router.get('/', async ( req, res ) => {
 router.get('/:placeID', async ( req, res ) => {
     console.log("place id: " + req.params.placeID);
 
-    const response = await new GetReq().getSpecificPlace(req.params.placeID);
+    const response = await new GetReq().getSpecificPendingPlace(req.params.placeID);
     res.json(response);
 });
 

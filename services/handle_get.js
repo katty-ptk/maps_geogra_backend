@@ -32,6 +32,35 @@ class GetReq {
         return response;
     }
     
+   async getSpecificPendingPlace(placeID) {
+        let response;
+
+        try {     
+
+            const place = await PendingPlace.findById(placeID);
+            response = place;
+
+        } catch ( err ) {
+            new ResponseService().handleError(err);
+
+            switch ( err.name ) {
+                case "CastError":
+                    response = {
+                        message: "The place with the given ID does not exist. Please check again."
+                    };       
+                    break;
+
+                default:
+                    response = {
+                        message: err
+                    };
+                    break;
+            }
+        }
+
+        return response;
+   }
+    
    async getSpecificPlace(placeID) {
         let response;
 
