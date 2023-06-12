@@ -1,12 +1,13 @@
 const Place = require('../models/Place');
 const ResponseService = require('../services/handle_responses');
 const PendingPlace = require('../models/PendingPlace');
+const Paths = require('../services/paths');
 
 class PostReq {
-    async createNewPlace(place_info) {
+    async createNewPlace(place_info, path) {
         let response;
 
-        const place = new PendingPlace({
+        const place = {
             title: place_info.title, 
             snippet: place_info.snippet ? place_info.snippet : "",
             lat: place_info.lat,
@@ -19,10 +20,14 @@ class PostReq {
             tourism: place_info.tourism,
             economy: place_info.economy,
             borders: place_info.borders
-       }); 
+        }
+
+       const tempPlace = path === new Paths().PendingPlaces
+            ? new PendingPlace(place)
+            : new Place(place); 
 
        try {
-            const savedPlace = await place.save();
+            const savedPlace = await tempPlace.save();
             response = savedPlace;
        } catch ( err ) {
             const validation = new ResponseService().checkForUndefinedParam(place);
@@ -41,6 +46,8 @@ class PostReq {
 
        return response;
     }
+
+
 }
 
 module.exports = PostReq;

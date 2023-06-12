@@ -21,14 +21,6 @@ router.get('/:placeID', async ( req, res ) => {
     res.json(response);
 });
 
-
-// insert a post
-router.post('/', async ( req, res ) => {
-   const response = await new PostReq().createNewPlace(req.body);
-   res.json(response);
-})
-
-
 // delete specific post
 router.delete('/:placeID', async ( req, res ) => {
     await Place.deleteOne({_id: req.params.placeID});
